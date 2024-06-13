@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
 import { gapi } from 'gapi-script';
 import { initClient, signIn, signOut, listFilesInFolder, getSheetData } from './googleAuth';
@@ -40,6 +39,15 @@ const App = () => {
       fetchFiles();
     }
   }, [isSignedIn]);
+
+  useEffect(() => {
+    // Set a timer to update isLoading to false after 3 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 3000 milliseconds = 3 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer if the component unmounts
+  }, []);
 
   const handleSignIn = async () => {
     if (!isInitialized) {
@@ -135,7 +143,6 @@ const App = () => {
   const getBgColor = (value) => {
     return value === 'OFF' ? 'bg-red-700' : 'bg-green-700';
   };
-
 
   return (
     <AnimatePresence>
