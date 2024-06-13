@@ -10,13 +10,14 @@ const loadingContainerVariants = {
 
 const LoadingScreen = () => (
   <motion.div
-    className="flex items-center justify-center h-screen bg-blue-500"
+    className="flex flex-col gap-8 items-center justify-center h-screen bg-black text-center"
     variants={loadingContainerVariants}
     initial="hidden"
     animate="visible"
     exit="exit"
   >
-    <h1 className="text-white text-4xl">Loading...</h1>
+    <h1 className="text-white text-4xl">Preferences for Students Mess</h1>
+    <h2 className="text-gray-200 text-2xl">By Bineet</h2>
   </motion.div>
 );
 

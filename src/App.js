@@ -132,23 +132,28 @@ const App = () => {
     setFilteredNames([]);
   };
 
+  const getBgColor = (value) => {
+    return value === 'OFF' ? 'bg-red-700' : 'bg-green-700';
+  };
+
+
   return (
     <AnimatePresence>
       {isLoading ? (
         <LoadingScreen />
       ) : (
         <motion.div
-          className="container mx-auto p-4"
+          className="container mx-auto p-4 flex flex-col items-center justify-center "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <h1 className="text-2xl font-bold mb-4">Google Drive Files</h1>
+          <h1 className="text-2xl font-bold mb-4">Preferences</h1>
           <h1 className="text-xl font-bold mb-4">{date}</h1>
           {!isSignedIn ? (
             <button
               onClick={handleSignIn}
-              className="bg-blue-500 text-white py-2 px-4 rounded"
+              className="bg-blue-500 text-white py-2 px-4 rounded flex"
             >
               Sign In
             </button>
@@ -156,7 +161,7 @@ const App = () => {
             <div>
               <button
                 onClick={handleSignOut}
-                className="bg-red-500 text-white py-2 px-4 rounded ml-2"
+                className="bg-red-500 text-white py-2 px-4 rounded w-full"
               >
                 Sign Out
               </button>
@@ -184,12 +189,12 @@ const App = () => {
                   )}
                 </div>
                 {selectedName && (
-                  <div className="mt-4 p-4 border rounded">
-                    <h2 className="text-xl font-bold mb-4">{selectedName[1]}</h2>
-                    <p><strong>Breakfast:</strong> {selectedName[2]}</p>
-                    <p><strong>Lunch:</strong> {selectedName[3]}</p>
-                    <p><strong>Dinner:</strong> {selectedName[4]}</p>
-                    <p><strong>Preference:</strong> {selectedName[5]}</p>
+                  <div className="mt-4 p-4 bg-white shadow-xl rounded-md">
+                    <h2 className="text-xl font-bold mb-4 text-center">{selectedName[1]}</h2>
+                    <div className={`text-center py-2 rounded-md my-4 text-white ${getBgColor(selectedName[2])}`}><strong>Breakfast:</strong> {selectedName[2]}</div>
+                    <div className={`text-center py-2 rounded-md my-4 text-white ${getBgColor(selectedName[3])}`}><strong>Lunch:</strong> {selectedName[3]}</div>
+                    <div className={`text-center py-2 rounded-md my-4 text-white ${getBgColor(selectedName[4])}`}><strong>Dinner:</strong> {selectedName[4]}</div>
+                    <div className='text-center py-2 bg-white rounded-md my-4 '><strong>Preference: {selectedName[5]}</strong></div>
                   </div>
                 )}
               </div>
