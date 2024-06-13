@@ -1,6 +1,6 @@
 import { gapi } from 'gapi-script';
 
-const CLIENT_ID = "395534623951-0o10vkm4niuieq3tfje2lp9jhu0q4a2e.apps.googleusercontent.com";
+const CLIENT_ID = "GIVE THE CLIENT ID";
 const DISCOVERY_DOCS = [
   'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest',
 ];
